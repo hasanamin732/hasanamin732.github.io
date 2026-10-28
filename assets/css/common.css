@@ -1,0 +1,183 @@
+
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --text: #222222;
+  --link: #345c91;
+  --border: #dddddd;
+  --fs-small: 0.9rem;
+  --content-width: 900px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #191919;
+  --text: #e8e8e8;
+  --link: #9bbcf0;
+  --border: #414141;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  min-height: 65px;
+}
+
+nav a {
+  color: var(--text);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+#theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-left: auto;
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+#theme-toggle svg {
+  width: 21px;
+  height: 21px;
+  fill: currentColor;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.primary {
+  flex: 1;
+  min-width: 0;
+}
+
+.primary h1 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.primary p {
+  margin-bottom: 1.3rem;
+}
+
+.secondary {
+  flex: 0 0 230px;
+}
+
+.secondary p {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+footer {
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-size: var(--fs-small);
+}
+
+footer p {
+  margin: 0;
+}
+
+@media screen and (max-width: 819px) {
+  body {
+    padding: 0 1.25rem;
+    font-size: 16px;
+  }
+
+  nav {
+    gap: 1rem;
+    padding: 0.8rem 0;
+  }
+
+  main {
+    padding-top: 2rem;
+    gap: 1rem;
+  }
+
+  .secondary {
+    width: 100%;
+  }
+}
+
+@media print {
+  body {
+    max-width: none;
+    padding: 0;
+    color: #000000;
+    background: #ffffff;
+  }
+
+  header,
+  footer,
+  #theme-toggle {
+    display: none;
+  }
+
+  main {
+    display: flex;
+    flex-direction: row;
+  }
+
+  a {
+    color: #000000;
+  }
+}
