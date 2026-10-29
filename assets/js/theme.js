@@ -1,53 +1,64 @@
 
-(function () {
+(() => {
   const root = document.documentElement;
-  const storageKey = "theme";
+  const button = document.getElementById("theme-toggle");
+  const storageKey = "hasan-site-theme";
 
-  let savedTheme = null;
+  function getSavedTheme() {
+    try {
+      const saved = localStorage.getItem(storageKey);
+      if (saved === "light" || saved === "dark") return saved;
+    } catch (error) {
+      // Storage may be unavailable in some browser settings.
+    }
 
-  try {
-    savedTheme = localStorage.getItem(storageKey);
-  } catch (error) {
-    // Continue without saved preferences if storage is unavailable.
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
   }
 
-  const systemPrefersDark =
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
+  function applyTheme(theme) {
+    root.dataset.theme = theme;
 
-  root.dataset.theme =
-    savedTheme || (systemPrefersDark ? "dark" : "light");
+    if (!button) return;
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.getElementById("theme-toggle");
+    const isDark = theme === "dark";
 
-    if (!toggle) return;
+    button.innerHTML = isDark
+      ? `<svg class="theme-icon" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+           <circle cx="12" cy="12" r="4"/>
+           <path d="M12 2v2 M12 20v2 M4.93 4.93l1.42 1.42
+                    M17.65 17.65l1.42 1.42 M2 12h2 M20 12h2
+                    M4.93 19.07l1.42-1.42 M17.65 6.35l1.42-1.42"/>
+         </svg>`
+      : `<svg class="theme-icon" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+           <path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5
+                    8.5 8.5 0 1 0 20.5 15.5Z"/>
+         </svg>`;
 
-    toggle.addEventListener("click", function () {
+    button.setAttribute(
+      "aria-label",
+      isDark ? "Switch to light mode" : "Switch to dark mode"
+    );
+    button.title = isDark ? "Switch to light mode" : "Switch to dark mode";
+  }
+
+  applyTheme(getSavedTheme());
+
+  if (button) {
+    button.addEventListener("click", () => {
       const nextTheme =
         root.dataset.theme === "dark" ? "light" : "dark";
-
-      root.dataset.theme = nextTheme;
 
       try {
         localStorage.setItem(storageKey, nextTheme);
       } catch (error) {
-        // Theme switching still works for the current page.
+        // The toggle still works on the current page if storage is blocked.
       }
 
-      toggle.setAttribute(
-        "aria-label",
-        nextTheme === "dark"
-          ? "Switch to light theme"
-          : "Switch to dark theme"
-      );
+      applyTheme(nextTheme);
     });
-
-    toggle.setAttribute(
-      "aria-label",
-      root.dataset.theme === "dark"
-        ? "Switch to light theme"
-        : "Switch to dark theme"
-    );
-  });
+  }
 })();

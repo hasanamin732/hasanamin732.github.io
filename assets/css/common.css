@@ -1,5 +1,4 @@
 
-
 :root {
   color-scheme: light;
 
@@ -23,19 +22,40 @@ html[data-theme="dark"] {
   --border: #344252;
 }
 
+/* Base styles */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
 
 body {
+  min-height: 100vh;
   margin: 0;
   background: var(--background);
   color: var(--text);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 17px;
   line-height: 1.75;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a {
+  color: var(--accent);
+}
+
+button {
+  font: inherit;
 }
 
 /* Navigation */
 
 .site-header {
+  position: relative;
+  z-index: 1;
   border-bottom: 1px solid var(--border);
   background: var(--background);
 }
@@ -80,7 +100,49 @@ body {
   border-bottom-color: var(--accent);
 }
 
-/* Two-column layout */
+/* Theme toggle button */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.theme-icon {
+  display: block;
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Two-column page layout */
 
 .page-layout {
   max-width: var(--content-width);
@@ -95,6 +157,7 @@ body {
 /* Left sidebar */
 
 .sidebar {
+  min-width: 0;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -106,12 +169,13 @@ body {
   margin: 0 auto 20px;
   object-fit: cover;
   object-position: center;
-  border-radius: 50%;
   border: 1px solid var(--border);
+  border-radius: 50%;
 }
 
 .sidebar-name {
   margin: 0 0 8px;
+  color: var(--text);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 23px;
   line-height: 1.4;
@@ -139,12 +203,14 @@ body {
 
 .contact-links a:hover {
   text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* Main content */
 
 .main-content {
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 h1,
@@ -175,19 +241,16 @@ p {
   margin: 0 0 20px;
 }
 
-a {
-  color: var(--accent);
-}
-
 .main-content a:hover {
   text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 .placeholder {
   color: var(--muted);
 }
 
-/* Projects */
+/* Research projects */
 
 .projects-section {
   margin-top: 48px;
@@ -235,14 +298,25 @@ a {
   }
 
   .nav-links {
+    width: 100%;
     flex-wrap: wrap;
-    gap: 22px;
+    align-items: center;
+    gap: 12px 22px;
+  }
+
+  .nav-links a {
+    padding: 6px 0;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
   }
 
   .page-layout {
     grid-template-columns: minmax(0, 1fr);
     gap: 38px;
     margin-top: 32px;
+    margin-bottom: 44px;
     padding: 0 22px;
   }
 
@@ -258,5 +332,20 @@ a {
 
   .main-content h1 {
     margin-bottom: 24px;
+  }
+
+  h2 {
+    font-size: 23px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
   }
 }
