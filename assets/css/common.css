@@ -1,5 +1,8 @@
 
+
 :root {
+  color-scheme: light;
+
   --background: #ffffff;
   --surface: #f6f8fb;
   --text: #263445;
@@ -9,13 +12,17 @@
   --content-width: 1080px;
 }
 
-* {
-  box-sizing: border-box;
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #121820;
+  --surface: #1c2632;
+  --text: #e6edf5;
+  --muted: #b0bdcc;
+  --accent: #8fc5ff;
+  --border: #344252;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 body {
   margin: 0;
