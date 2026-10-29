@@ -2,149 +2,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Hasan Amin</title>
-  <meta name="author" content="Hasan Amin">
-  <meta name="description" content="Personal academic website of Hasan Amin, a mathematics graduate at LUMS.">
-
-  <link rel="icon" href="/assets/img/icon.svg">
-  <link rel="stylesheet" href="/assets/css/common.css">
-  <script src="/assets/js/theme.js" defer></script>
-
-  <style>
-    .secondary {
-      text-align: center;
-      order: -1;
-    }
-
-    .secondary p {
-      font-size: var(--fs-small);
-    }
-
-    @media screen and (min-width: 820px), print {
-      main {
-        flex-direction: row;
-      }
-
-      .primary {
-        padding-right: 3rem;
-      }
-
-      .secondary {
-        order: 2;
-        min-width: 230px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hasan Amin | Mathematics</title>
+  <meta name="description" content="Academic website of Hasan Amin, a mathematics graduate at LUMS.">
+  <link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/common.css">
 </head>
 
 <body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Main navigation">
+      <a class="site-name" href="./index.html">Hasan Amin</a>
+      <div class="nav-links">
+        <a href="./index.html" aria-current="page">Home</a>
+        <a href="./research.html">Research Interests</a>
+      </div>
+    </nav>
+  </header>
 
-<header>
-  <nav aria-label="Main">
-    <a href="./" aria-current="page">Home</a>
-    <a href="#about">About</a>
-    <a href="#interests">Interests</a>
-    <a href="#projects">Projects</a>
+  <div class="page-layout">
+    <aside class="sidebar">
+      <img
+        class="profile-picture"
+        src="./assets/img/Hasan.jpg"
+        alt="Portrait of Hasan Amin"
+      >
 
-    <button id="theme-toggle" type="button" aria-label="Toggle theme">
-      <svg xmlns="http://www.w3.org/2000/svg"
-           viewBox="0 -960 960 960"
-           aria-hidden="true">
-        <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 4q-54 41-85.5 103T417-600q0 125 87.5 212.5T717-300q20 0 40-3t39-9q-47 88-131 140t-185 52Z"/>
-      </svg>
-    </button>
-  </nav>
-</header>
-
-<main>
-  <div class="primary">
-    <h1>Hasan Amin</h1>
-
-    <section id="about">
-      <p>
-        I am a mathematics graduate currently pursuing the International
-        Mathematics Master (IMM) programme at
-        <a href="https://lums.edu.pk/">Lahore University of Management Sciences (LUMS)</a>
-        in Pakistan.
+      <h2 class="sidebar-name">Hasan Amin</h2>
+      <p class="sidebar-description">
+        Mathematics graduate<br>
+        International Mathematics Master<br>
+        LUMS, Pakistan
       </p>
 
-      <p>
-        I completed my undergraduate degree in Mathematics at
-        <a href="https://nust.edu.pk/">the National University of Sciences and Technology (NUST)</a>
-        in Islamabad, Pakistan.
-      </p>
-    </section>
+      <div class="contact-links">
+        <a href="https://github.com/hasanamin732"
+           target="_blank" rel="noopener noreferrer">GitHub</a>
 
-    <section id="interests">
-      <h2>Interests</h2>
-      <p>
-        My mathematical interests include differential geometry, topology,
-        Lie groups, and mathematical physics, particularly their connections
-        with geometry and the study of symmetry.
-      </p>
-    </section>
+        <a href="https://www.linkedin.com/in/your-profile/"
+           target="_blank" rel="noopener noreferrer">LinkedIn</a>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <p>
-        My undergraduate final year project was a review of the Poincaré
-        Conjecture and Perelman's proof, focusing on the role of Ricci flow.
-      </p>
+        <a href="mailto:25070004@lums.edu.pk">Email</a>
 
-      <p>
-        I have also studied the Hopf fibration and spectral sequences,
-        including their connections with the topology of spheres and the
-        geometry of \(SU(2)\).
-      </p>
-    </section>
+        <a href="./assets/docs/Hasan_Amin_CV.pdf"
+           target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+      </div>
+    </aside>
 
-    <p>
-      You can find some of my code on
-      <a href="https://github.com/hasanamin732">GitHub</a>.
-    </p>
+    <main class="main-content">
+      <h1>Welcome</h1>
 
-    <p>
-      A full academic history can be made available in my CV.
-    </p>
+      <section>
+        <h2>About Me</h2>
+        <p class="placeholder">
+          I am Hasan Amin, a mathematics graduate from LUMS, Pakistan. I am currently pursuing an International Mathematics Master, where I aim to further develop my research skills and contribute to the field of mathematics.
+        </p>
+
+      </section>
+    </main>
   </div>
 
-  <aside class="secondary">
-    <p>
-      International Mathematics Master (IMM)
-      <br>
-      LUMS, Lahore, Pakistan
-    </p>
-
-    <p>
-      Mathematics
-      <br>
-      NUST, Islamabad, Pakistan
-    </p>
-
-    <p>
-      <a href="https://github.com/hasanamin732" aria-label="GitHub">
-        GitHub
-      </a>
-    </p>
-  </aside>
-</main>
-
-<footer>
-  <p>Hasan Amin</p>
-</footer>
-
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [["\\(", "\\)"]],
-      displayMath: [["\\[", "\\]"]]
-    }
-  };
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
+  <footer class="site-footer">
+    <p>Hasan Amin · Mathematics</p>
+  </footer>
 </body>
 </html>
